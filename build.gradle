@@ -1,0 +1,55 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.9.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+plugins {
+    id 'org.springframework.boot' version '1.5.9.RELEASE'
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+
+group = 'com.codekaiser'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+jar {
+      baseName = 'cipher'
+    version =  '0.1.0'
+}
+//jar {
+//    manifest {
+//        attributes 'Implementation-Title': 'Gradle Quickstart',
+//                   'Implementation-Version': version,
+//                   'Main-Class': 'com.codekaiser.cipher.CipherApplication'
+//    }
+//       from {
+//            configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+//       }
+//}
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-web')
+	//compile('org.springframework:spring-web')
+//		compile('org.springframework:spring-webmvc')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+bootRepackage {
+    mainClass = 'com.codekaiser.cipher.CipherApplication'
+}
